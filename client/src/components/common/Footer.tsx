@@ -7,5 +7,6 @@ export default function Footer() {
 const Wrapper = styled.div`
   background-color: var(--clr-light);
   text-align: center;
-  padding: 1rem 1.25rem 1.75rem;
+  padding: 1rem 1.25rem;
+  color: var(--clr-dark);
 `

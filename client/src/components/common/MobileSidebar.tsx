@@ -1,14 +1,24 @@
-import { useState, SyntheticEvent } from 'react'
+import { useState, SyntheticEvent, useEffect } from 'react'
 import styled from 'styled-components'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { Tabs, Tab } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+
+enum Routes {
+  Home = '/',
+  Documents = '/documents',
+  News = '/news',
+  Contacts = '/contacts',
+}
 
 export default function MobileSidebar() {
-  const [tabIndex, setTabIndex] = useState(0)
+  const location = useLocation()
+  const history = useNavigate()
+  const [url, setUrl] = useState(location.pathname as Routes)
 
-  function onChange(e: SyntheticEvent, newValue: number) {
-    setTabIndex(newValue)
+  function onChange(e: SyntheticEvent, newValue: Routes) {
+    setUrl(newValue)
+    history(newValue)
   }
 
   return (
@@ -17,24 +27,17 @@ export default function MobileSidebar() {
         <AccountCircleIcon />
       </div>
       <Tabs
-        value={tabIndex}
+        value={url}
         variant='scrollable'
         scrollButtons='auto'
         className='tabs'
         onChange={onChange}
+        TabIndicatorProps={{ children: <span className='MuiTabs-indicatorSpan' /> }}
       >
-        <Link to='/'>
-          <Tab value={0} label='Главная' />
-        </Link>
-        <Link to='/documents'>
-          <Tab value={1} label='Документы' />
-        </Link>
-        <Link to='/news'>
-          <Tab value={2} label='Новости' />
-        </Link>
-        <Link to='/contacts'>
-          <Tab value={3} label='Контакты' />
-        </Link>
+        <Tab value={Routes.Home} label='Главная' className='tab' />
+        <Tab value={Routes.Documents} label='Документы' className='tab' />
+        <Tab value={Routes.News} label='Новости' className='tab' />
+        <Tab value={Routes.Contacts} label='Контакты' className='tab' />
       </Tabs>
     </Container>
   )
@@ -43,11 +46,12 @@ export default function MobileSidebar() {
 const Container = styled.div`
   background-color: var(--clr-dark);
   color: var(--clr-white);
-  /* color: var(--clr-light); */
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   padding-left: 1.25rem;
+  position: sticky;
+  bottom: 0;
 
   .login-icon-container {
     line-height: 1;
@@ -59,26 +63,26 @@ const Container = styled.div`
   }
 
   .tabs {
-    /* margin-left: 0.25rem; */
-    a button {
+    margin-left: 0.25rem;
+
+    .tab {
       color: var(--clr-white);
       opacity: 1;
-      /* color: red; */
-      /* font-weight: 700; */
     }
 
     .MuiTabs-indicator {
-      background-color: var(--clr-light);
       background-color: transparent;
-      /* height: 6px; */
+      height: 0.5rem;
       display: flex;
       justify-content: center;
     }
 
     .MuiTabs-indicatorSpan {
-      background-color: red;
-      max-width: 20px;
+      background-color: var(--clr-light);
+      width: 1.5rem;
       width: '100%';
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
     }
   }
 `

@@ -1,11 +1,14 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export default function AppLink({ title }: { title: string }) {
+export default function AppLink({ title, to }: { title: string; to: string }) {
   return (
-    <Container>
-      <div className='title'>{title.toLocaleUpperCase()}</div>
-      <div className='arraw'>&rarr;</div>
-    </Container>
+    <Link to={to}>
+      <Container>
+        <div className='title'>{title.toLocaleUpperCase()}</div>
+        <div className='arraw'>&rarr;</div>
+      </Container>
+    </Link>
   )
 }
 

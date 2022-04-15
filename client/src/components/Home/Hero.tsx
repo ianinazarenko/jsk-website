@@ -14,11 +14,11 @@ export default function Hero() {
         <ContactsShort title='Телефон аварийной службы' content='+ 7 (812) 999-00-00' />
         <ContactsShort title='E-mail ЖСК' content='jsk-971@mail.ru' />
       </div>
-      <AppLink title='Все контакты' />
+      <AppLink title='Все контакты' to='/contacts' />
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-  margin-top: 1.75rem;
+  margin-top: 0.75rem;
 `

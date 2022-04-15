@@ -16,7 +16,7 @@ html {
 :root {
   /* fonts */
   --text-font: 'Roboto', sans-serif;
-  --font-color: #333;
+  --text-color: #333;
 
   /* colors */
   --clr-primary: #ffab91;
@@ -37,7 +37,7 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--textColor);
+  color: var(--text-color);
 }
 
 li {
