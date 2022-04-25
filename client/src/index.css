@@ -13,6 +13,12 @@ html {
   font-size: 18px;
 }
 
+@media screen and (min-width: 960px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 :root {
   /* fonts */
   --text-font: 'Roboto', sans-serif;
@@ -24,7 +30,11 @@ html {
   --clr-dark: #c97b63;
   --clr-white: #fefefe;
 
-  --transition: all 3ms ease-in-out;
+  --transition: all 300ms ease-in-out;
+  --trs-trf: transform 300ms ease-in-out;
+
+  --desc: 960px;
+  --desc-wide: 1366px;
 }
 
 body {
@@ -57,6 +67,48 @@ p {
   font-size: 1rem;
 }
 
+.App {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 960px) {
+  .App {
+    grid-template-columns: auto 1fr;
+  }
+}
+
 .g--section {
+  width: 100%;
   padding: 1.25rem;
+}
+
+.g--centered {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.g--centered-768 {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.g--centered-648 {
+  max-width: 648px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 960px) {
+  .hover-link {
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    margin: 0.55rem 0;
+    padding: 0 0.5rem;
+    transition: var(--transition);
+  }
+
+  .hover-link:hover {
+    border-color: var(--clr-primary);
+  }
 }

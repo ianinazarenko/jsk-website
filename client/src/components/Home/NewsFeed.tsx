@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import AppLink from '../common/AppLink'
 import NewsSample from './NewsSample'
 
@@ -15,13 +16,29 @@ const newsSampleData = [
 
 export default function NewsFeed() {
   return (
-    <div className='g--section'>
-      <AppLink title='Новости' to='/news' />
-      <div className='news-container'>
-        {newsSampleData.map((news, index) => (
-          <NewsSample title={news.title} text={news.text} key={index} />
-        ))}
+    <Wrapper className='g--section'>
+      <div className='g--centered-768'>
+        <AppLink title='Новости' to='/news' />
+        <div className='news-container'>
+          {newsSampleData.map((news, index) => (
+            <NewsSample title={news.title} text={news.text} key={index} />
+          ))}
+        </div>
       </div>
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  display: block;
+
+  @media (min-width: 960px) {
+    .news-container {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 2rem;
+      align-items: start;
+    }
+  }
+`

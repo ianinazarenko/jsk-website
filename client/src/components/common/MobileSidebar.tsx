@@ -3,13 +3,7 @@ import styled from 'styled-components'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { Tabs, Tab } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
-
-enum Routes {
-  Home = '/',
-  Documents = '/documents',
-  News = '/news',
-  Contacts = '/contacts',
-}
+import { Routes } from '../../enums'
 
 export default function MobileSidebar() {
   const location = useLocation()
@@ -29,7 +23,7 @@ export default function MobileSidebar() {
       <Tabs
         value={url}
         variant='scrollable'
-        scrollButtons='auto'
+        scrollButtons={false}
         className='tabs'
         onChange={onChange}
         TabIndicatorProps={{ children: <span className='MuiTabs-indicatorSpan' /> }}
@@ -44,6 +38,12 @@ export default function MobileSidebar() {
 }
 
 const Container = styled.div`
+  @media (min-width: 960px) {
+    display: none;
+  }
+
+  width: 100%;
+  overflow-x: hidden;
   background-color: var(--clr-dark);
   color: var(--clr-white);
   display: flex;

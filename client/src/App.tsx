@@ -5,16 +5,20 @@ import { Contacts, Documents, Home, News, NotFound } from './pages'
 function App() {
   return (
     <div className='App'>
-      {/* <DesktopSidebar /> */}
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/news' element={<News />} />
-        <Route path='/documents' element={<Documents />} />
-        <Route path='/contacts' element={<Contacts />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-      <MobileSidebar />
-      <Footer />
+      <div>
+        <DesktopSidebar />
+      </div>
+      <div>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/news' element={<News />} />
+          <Route path='/documents' element={<Documents />} />
+          <Route path='/contacts' element={<Contacts />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+        <MobileSidebar />
+        <Footer />
+      </div>
     </div>
   )
 }
