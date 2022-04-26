@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export default function Announcement() {
   return (
     <Wrapper className='g--section'>
-      <article>
+      <article className='g--centered'>
         <p>Уважаемые жители дома!</p>
         <p>
           Уведомляем вас о том, что ежедневно производится дезинфекция лестничных клеток, перил,
@@ -31,9 +31,9 @@ const Wrapper = styled.section`
 
   @media (min-width: 768px) {
     article {
-      max-width: 648px;
+      /* max-width: 648px;
       margin-left: auto;
-      margin-right: auto;
+      margin-right: auto; */
     }
   }
 `

@@ -25,8 +25,12 @@ function App() {
 export default App
 
 const AppWrapper = styled.div`
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto auto;
+
   @media screen and (min-width: 1170px) {
-    display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr auto;
     grid-template-areas:

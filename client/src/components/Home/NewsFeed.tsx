@@ -26,24 +26,26 @@ const newsSampleData = [
 
 export default function NewsFeed() {
   return (
-    <Wrapper className='g--section'>
-      <AppLink title='Новости' to='/news' />
-      <div className='news-container'>
-        {newsSampleData.map((news, index) => (
-          <NewsSample title={news.title} text={news.text} key={index} />
-        ))}
-      </div>
-    </Wrapper>
+    <section className='g--section '>
+      <Wrapper className='g--centered'>
+        <AppLink title='Новости' to='/news' />
+        <div className='news-container'>
+          {newsSampleData.map((news, index) => (
+            <NewsSample title={news.title} text={news.text} key={index} />
+          ))}
+        </div>
+      </Wrapper>
+    </section>
   )
 }
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   .news-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 2rem;
+    grid-gap: 3rem;
   }
-  @media (min-width: 960px) {
+  @media (min-width: 1170px) {
     max-width: 960px;
     margin-left: auto;
     margin-right: auto;
