@@ -23,5 +23,16 @@ const Wrapper = styled.div`
 
   .header-desc {
     margin-bottom: 2.5rem;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 960px) {
+    .header-title {
+      font-size: 4rem;
+    }
+
+    .header-desc {
+      margin-bottom: 0;
+    }
   }
 `

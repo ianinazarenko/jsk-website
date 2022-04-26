@@ -43,7 +43,7 @@ export default function MobileSidebar() {
   )
 }
 
-const Container = styled.div`
+const Container = styled.nav`
   background-color: var(--clr-dark);
   color: var(--clr-white);
   display: flex;
@@ -84,5 +84,9 @@ const Container = styled.div`
       border-top-left-radius: 0.25rem;
       border-top-right-radius: 0.25rem;
     }
+  }
+
+  @media (min-width: 1170px) {
+    display: none;
   }
 `

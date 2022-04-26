@@ -13,6 +13,12 @@ html {
   font-size: 18px;
 }
 
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 :root {
   /* fonts */
   --text-font: 'Roboto', sans-serif;
@@ -23,8 +29,12 @@ html {
   --clr-light: #ffddc1;
   --clr-dark: #c97b63;
   --clr-white: #fefefe;
+  --clr-gray: #999999;
 
-  --transition: all 3ms ease-in-out;
+  --transition: all 300ms ease-in-out;
+
+  --desc: 960px;
+  --wide-desc: 1366px;
 }
 
 body {
@@ -59,4 +69,16 @@ p {
 
 .g--section {
   padding: 1.25rem;
+}
+
+.g--hover-link {
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  margin: 0.55rem 0;
+  padding: 0 0.5rem;
+  transition: var(--transition);
+}
+
+.g--hover-link:hover {
+  border-color: var(--clr-primary);
 }
