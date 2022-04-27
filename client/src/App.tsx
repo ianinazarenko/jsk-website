@@ -1,7 +1,7 @@
 import { Routes, Route, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { DesktopSidebar, Footer, MobileSidebar } from './components/common'
-import { Contacts, Documents, Home, News, NotFound } from './pages'
+import { Contacts, Documents, Home, News, SignIn, NotFound } from './pages'
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
           <Route path='/news' element={<News />} />
           <Route path='/documents' element={<Documents />} />
           <Route path='/contacts' element={<Contacts />} />
+          <Route path='/sign-in' element={<SignIn />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </main>

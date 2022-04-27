@@ -49,9 +49,4 @@ const Wrapper = styled.div`
     max-width: 960px;
     display: grid;
   }
-
-  /* .contacts {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-  } */
 `
