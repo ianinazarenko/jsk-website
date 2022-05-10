@@ -30,6 +30,7 @@ html {
   --clr-dark: #c97b63;
   --clr-white: #fefefe;
   --clr-gray: #999999;
+  --clr-primary-transparent: rgba(255, 221, 193, 0.2);
 
   --transition: all 300ms ease-in-out;
 
