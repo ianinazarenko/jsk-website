@@ -18,9 +18,11 @@
 .env.test.local
 .env.production.local
 /.vscode
-.env
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# ignored files & sencetive data
+.env
+*.sql
