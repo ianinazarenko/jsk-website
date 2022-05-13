@@ -1,3 +1,5 @@
+import UnderConstruction from './UnderConstruction'
+
 export default function Documents() {
-  return <div>Documents</div>
+  return <UnderConstruction h1='Документы' />
 }
