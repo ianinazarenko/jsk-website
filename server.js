@@ -1,6 +1,11 @@
 const express = require('express')
 const dotenv = require('dotenv')
 
+// middleware
+const notFoundMiddleware = require('./middleware/notFound')
+const errorHandlerMiddleware = require('./middleware/errorHandler')
+
+// routes
 const newsRouter = require('./routes/newsRoutes')
 
 dotenv.config()
@@ -12,6 +17,9 @@ app.get('/', async (req, res) => {
 })
 
 app.use('/api/v1/news', newsRouter)
+
+app.use(notFoundMiddleware)
+app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 5000
 
