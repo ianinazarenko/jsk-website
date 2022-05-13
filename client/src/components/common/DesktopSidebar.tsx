@@ -36,6 +36,21 @@ export default function DesktopSidebar() {
         )}
       </section>
 
+      <section className='sub-menu-container'>
+        <h3>Добавить/Редактировать...</h3>
+        <ul>
+          <Link to='/'>
+            <li className='g--hover-link'>Главное объявление</li>
+          </Link>
+          <Link to='/news'>
+            <li className='g--hover-link'>Новость</li>
+          </Link>
+          <Link to='/documents'>
+            <li className='g--hover-link'>Документ</li>
+          </Link>
+        </ul>
+      </section>
+
       <section className='menu-container'>
         <h3>Меню</h3>
         <ul>
@@ -53,21 +68,6 @@ export default function DesktopSidebar() {
           </Link>
         </ul>
       </section>
-
-      <section className='sub-menu-container'>
-        <h3>Добавить/Редактировать...</h3>
-        <ul>
-          <Link to='/'>
-            <li className='g--hover-link'>Главное объявление</li>
-          </Link>
-          <Link to='/news'>
-            <li className='g--hover-link'>Новость</li>
-          </Link>
-          <Link to='/documents'>
-            <li className='g--hover-link'>Документ</li>
-          </Link>
-        </ul>
-      </section>
     </Wrapper>
   )
 }
@@ -81,9 +81,10 @@ const Wrapper = styled.aside`
     top: 0;
     height: 100vh;
     background-color: var(--clr-white);
-    border-right: 2px solid var(--clr-primary);
+    border-right: 1px solid #c4c4c4;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    row-gap: 2rem;
     padding: 1.25rem;
     padding-right: 2rem;
 
@@ -94,6 +95,11 @@ const Wrapper = styled.aside`
       padding: 0.25rem 0.5rem;
       border-left: 3px solid transparent;
     }
+
+    /* h3,
+    ul {
+      text-align: right;
+    } */
 
     /* ACCOUNT */
     .account-container {

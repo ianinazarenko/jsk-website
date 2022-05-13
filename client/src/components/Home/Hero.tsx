@@ -6,7 +6,7 @@ import HeroHeader from './HeroHeader'
 export default function Hero() {
   return (
     <section className='g--section'>
-      <Wrapper className='g--centered'>
+      <Wrapper className='g--section-centered'>
         <div>
           <HeroHeader />
           <AppLink title='Все контакты' to='/contacts' />
@@ -28,25 +28,25 @@ const Wrapper = styled.div`
   margin-top: 0.75rem;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr;
   row-gap: 2rem;
 
   .contacts {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, auto);
-    row-gap: 1rem;
+    row-gap: 1.25rem;
   }
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr;
     align-items: center;
     column-gap: 3rem;
   }
 
-  @media (min-width: 1170px) {
+  /* @media (min-width: 1170px) {
     max-width: 960px;
     display: grid;
-  }
+  } */
 `

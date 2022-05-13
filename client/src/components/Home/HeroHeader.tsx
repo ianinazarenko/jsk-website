@@ -19,11 +19,13 @@ const Wrapper = styled.div`
     color: var(--clr-dark);
     font-weight: 700;
     margin-bottom: 0;
+    font-family: var(--font-display);
   }
 
   .header-desc {
     margin-bottom: 2.5rem;
     margin-bottom: 0;
+    font-family: var(--font-display);
   }
 
   @media (min-width: 960px) {

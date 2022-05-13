@@ -52,6 +52,7 @@ const Container = styled.nav`
   padding-left: 1.25rem;
   position: sticky;
   bottom: 0;
+  overflow-x: hidden;
 
   .login-icon-container {
     line-height: 1;

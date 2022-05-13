@@ -8,9 +8,8 @@ const newsSampleData = [
     text: 'В индивидуальном тепловом пункте ( ИТП) парадных 1,2,3,4 корпуса 2 завершены работы по модернизации щитов управления системой отопления и горячей воды (оборудование смонтировано). Начат процесс наладки...',
   },
   {
-    title:
-      '14 ЯНВАРЯ В ПАРАДНОЙ № 2 ВОЗМОЖНЫ КРАТКОВРЕМЕННЫЕ ОТКЛЮЧЕНИЯ ЭЛЕКТРОПИТАНИЯ В КВАРТИРАХ С 10.00 ДО 15.00 ПО ПРИЧИНЕ ПРОИЗВОДСТВА РАБОТ В ГРЩ',
-    text: 'Приносим извинения за доставленные неудобствва',
+    title: 'Парадная №2: объявдение',
+    text: '14 января в Парадной №2 возможны кратковременные отключения электнопитания в квартирах с 10.00 до 15.00 по причины производства работ в ГРЩ. \n Приносим извинения за доставленные неудобства',
   },
   // {
   //   title:
@@ -27,7 +26,7 @@ const newsSampleData = [
 export default function NewsFeed() {
   return (
     <section className='g--section '>
-      <Wrapper className='g--centered'>
+      <Wrapper className='g--section-centered'>
         <AppLink title='Новости' to='/news' />
         <div className='news-container'>
           {newsSampleData.map((news, index) => (
@@ -45,11 +44,7 @@ const Wrapper = styled.div`
     grid-template-columns: 1fr;
     grid-gap: 3rem;
   }
-  @media (min-width: 1170px) {
-    max-width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-
+  @media (min-width: 1441px) {
     .news-container {
       grid-template-columns: 1fr 1fr;
     }

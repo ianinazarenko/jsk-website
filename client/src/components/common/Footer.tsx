@@ -5,8 +5,13 @@ export default function Footer() {
 }
 
 const Wrapper = styled.footer`
+  color: var(--clr-dark);
   background-color: var(--clr-light);
   text-align: center;
   padding: 1rem 1.25rem;
-  color: var(--clr-dark);
+
+  @media (min-width: 768px) {
+    margin-top: 2rem;
+    background-color: var(--clr-whitesmoke);
+  }
 `
