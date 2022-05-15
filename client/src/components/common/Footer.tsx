@@ -6,11 +6,11 @@ export default function Footer() {
 
 const Wrapper = styled.footer`
   color: var(--clr-dark);
-  background-color: var(--clr-light);
+  background-color: var(--clr-whitesmoke);
   text-align: center;
   padding: 1rem 1.25rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1170px) {
     margin-top: 2rem;
     background-color: var(--clr-whitesmoke);
   }

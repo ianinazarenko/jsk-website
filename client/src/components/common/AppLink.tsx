@@ -5,28 +5,45 @@ export default function AppLink({ title, to }: { title: string; to: string }) {
   return (
     <Link to={to}>
       <Container>
-        <div className='title'>{title.toLocaleUpperCase()}</div>
-        <div className='arraw'>&rarr;</div>
+        <span className='title'>{title.toLocaleUpperCase()}</span>
+        <span className='arraw'>&rarr;</span>
       </Container>
     </Link>
   )
 }
 
 const Container = styled.div`
-  padding: 0.75rem 0;
+  display: inline-block;
+  position: relative;
+  margin: 0.75rem 0;
+  padding: 0.25rem 0;
+  color: var(--clr-dark);
   font-weight: 700;
   font-size: 1.5rem;
-  color: var(--clr-dark);
   line-height: 2rem;
-  display: flex;
-  align-items: center;
   cursor: pointer;
-  /* transition */
   transition: var(--transition);
 
-  /* think about hover over contaner or text? */
-  &:hover {
-    color: var(--clr-primary);
+  &:after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--clr-dark);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  &:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  span {
+    line-height: 1.5rem;
   }
 
   .title {

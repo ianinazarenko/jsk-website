@@ -44,6 +44,7 @@ export default function MobileSidebar() {
 }
 
 const Container = styled.nav`
+  margin-top: 1rem;
   background-color: var(--clr-dark);
   color: var(--clr-white);
   display: flex;
@@ -79,7 +80,7 @@ const Container = styled.nav`
     }
 
     .MuiTabs-indicatorSpan {
-      background-color: var(--clr-light);
+      background-color: var(--clr-whitesmoke);
       width: 1.5rem;
       width: '100%';
       border-top-left-radius: 0.25rem;

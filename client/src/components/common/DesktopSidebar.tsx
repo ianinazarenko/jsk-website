@@ -36,21 +36,6 @@ export default function DesktopSidebar() {
         )}
       </section>
 
-      <section className='sub-menu-container'>
-        <h3>Добавить/Редактировать...</h3>
-        <ul>
-          <Link to='/'>
-            <li className='g--hover-link'>Главное объявление</li>
-          </Link>
-          <Link to='/news'>
-            <li className='g--hover-link'>Новость</li>
-          </Link>
-          <Link to='/documents'>
-            <li className='g--hover-link'>Документ</li>
-          </Link>
-        </ul>
-      </section>
-
       <section className='menu-container'>
         <h3>Меню</h3>
         <ul>
@@ -67,7 +52,21 @@ export default function DesktopSidebar() {
             <li className='g--hover-link'>Контакты</li>
           </Link>
         </ul>
+        <hr className='divider' />
+        <ul>
+          <Link to='/announcement/add'>
+            <li className='g--hover-link'>Главное объявление</li>
+          </Link>
+          <Link to='/news/add'>
+            <li className='g--hover-link'>Новость</li>
+          </Link>
+          <Link to='/documents/add'>
+            <li className='g--hover-link'>Документ</li>
+          </Link>
+        </ul>
       </section>
+
+      <section className='ballast-container'>{/* Dummy section */}</section>
     </Wrapper>
   )
 }
@@ -76,30 +75,24 @@ const Wrapper = styled.aside`
   display: none;
 
   @media (min-width: 1170px) {
+    min-width: 18rem;
+    max-width: 28rem;
+    height: 100vh;
+    padding: 2rem 3rem;
     display: block;
     position: sticky;
     top: 0;
-    height: 100vh;
     background-color: var(--clr-white);
     border-right: 1px solid #c4c4c4;
     display: grid;
-    grid-template-rows: auto 1fr 1fr;
+    grid-template-rows: 10% 1fr 10%;
     row-gap: 2rem;
-    padding: 1.25rem;
-    padding-right: 2rem;
 
     h3 {
       color: var(--clr-gray);
       font-weight: 400;
       text-transform: uppercase;
-      padding: 0.25rem 0.5rem;
-      border-left: 3px solid transparent;
     }
-
-    /* h3,
-    ul {
-      text-align: right;
-    } */
 
     /* ACCOUNT */
     .account-container {
@@ -157,9 +150,18 @@ const Wrapper = styled.aside`
     /* MAIN MENU */
     .menu-container {
       font-size: 1rem;
+      align-self: center;
 
       li {
         text-transform: uppercase;
+      }
+
+      .divider {
+        width: 6rem;
+        height: 1px;
+        margin: 2rem auto;
+        border: none;
+        border-top: 1px solid #c4c4c4;
       }
     }
 

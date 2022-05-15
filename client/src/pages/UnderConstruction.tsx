@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { ContactsShort } from '../components/common'
 import { ReactComponent as UnderConstructionImg } from '../assets/img/under_construction.svg'
 import { Button } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 export default function UnderConstruction({ h1 }: { h1: string }) {
   return (
@@ -24,7 +25,11 @@ export default function UnderConstruction({ h1 }: { h1: string }) {
             />
             <ContactsShort title='Диспетчер аварийной службы' phone='+ 7 (812) 999-00-00' />
             <div>
-              <Button>На главную</Button>
+              <Link to='/'>
+                <Button className='g--btn' variant='outlined'>
+                  На главную
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

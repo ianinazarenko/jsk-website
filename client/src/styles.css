@@ -21,9 +21,17 @@ html {
 
   /* colors */
   --clr-text: #333;
+  /* |-> old colors */
   --clr-primary: #ffab91;
-  --clr-light: #ffddc1;
-  --clr-dark: #c97b63;
+  /* --clr-light: #ffddc1; */
+  /* --clr-dark: #c97b63; */
+  /* <-| old colors */
+  /* |-> new colors */
+  --clr-light: lightcoral;
+  --clr-dark: brown;
+  /* --clr-dark: #a52a2a; */
+  /* <-| new colors */
+  --clr-button-bg: rgba(201, 123, 99, 0.1);
   --clr-white: #fefefe;
   --clr-gray: #999999;
   --clr-primary-transparent: rgba(255, 221, 193, 0.2);
@@ -43,7 +51,22 @@ body {
   background-color: var(--clr-white);
 }
 
-/* new */
+a {
+  text-decoration: none;
+  color: var(--clr-text);
+}
+
+li {
+  list-style: none;
+}
+
+img,
+svg {
+  width: 100%;
+  display: block;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
 
 h1,
 h2,
@@ -97,21 +120,14 @@ p.g--reading-text {
   cursor: pointer;
 }
 
-a {
-  text-decoration: none;
-  color: var(--clr-text);
+button.g--btn {
+  color: var(--clr-dark);
+  border: 1px solid var(--clr-dark);
 }
 
-li {
-  list-style: none;
-}
-
-img,
-svg {
-  width: 100%;
-  display: block;
-  -o-object-fit: cover;
-  object-fit: cover;
+button.g--btn:hover {
+  border-color: var(--clr-dark);
+  background-color: var(--clr-button-bg);
 }
 
 .g--section {
@@ -167,12 +183,13 @@ svg {
     cursor: pointer;
     border-left: 3px solid transparent;
     margin: 0.55rem 0;
-    padding: 0 0.5rem;
+    margin-left: -1rem;
+    padding: 0 1rem;
     transition: var(--transition);
   }
 
   .g--hover-link:hover {
-    border-color: var(--clr-primary);
+    border-color: var(--clr-dark);
   }
 }
 @media screen and (min-width: 1920px) {
