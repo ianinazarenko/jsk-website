@@ -1,9 +1,26 @@
 const News = require('../models/News')
 
 async function getAllNews(req, res) {
-  const [rows, fields] = await News.getAllNews()
-  console.log(rows)
+  const [rows, _] = await News.getAllNews()
   res.status(200).json({ rows })
 }
 
-module.exports = { getAllNews }
+async function getLatestNews(req, res) {
+  const [rows, _] = await News.getLatestNews()
+  res.status(200).json({ rows })
+}
+
+async function getSingleNews(req, res) {
+  const { id } = req.params
+  const [rows, _] = await News.getSingleNews(id)
+  res.status(200).json({ rows })
+}
+
+async function createNews(req, res) {
+  const { title, text } = req.body
+  const newNews = new News(title, text, new Date().toISOString().slice(0, 19).replace('T', ' '))
+  const [rows, _] = await newNews.create(1, 'admin')
+  res.status(201).json({ rows })
+}
+
+module.exports = { getAllNews, getLatestNews, getSingleNews, createNews }
