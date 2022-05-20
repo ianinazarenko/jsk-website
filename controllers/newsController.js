@@ -1,13 +1,20 @@
 const News = require('../models/News')
 
 async function getAllNews(req, res) {
-  const [rows, _] = await News.getAllNews()
-  res.status(200).json({ rows })
+  try {
+    const news = await News.find({})
+    if (!news?.length) throw new Error('No news')
+    res.status(200).json({ news })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
 }
 
 async function getLatestNews(req, res) {
   const [rows, _] = await News.getLatestNews()
-  res.status(200).json({ rows })
+  console.log(rows)
+  res.status(200).json({ news: rows })
 }
 
 async function getSingleNews(req, res) {
@@ -17,10 +24,18 @@ async function getSingleNews(req, res) {
 }
 
 async function createNews(req, res) {
-  const { title, text } = req.body
-  const newNews = new News(title, text, new Date().toISOString().slice(0, 19).replace('T', ' '))
-  const [rows, _] = await newNews.create(1, 'admin')
-  res.status(201).json({ rows })
+  const { title, text, userId } = req.body
+  try {
+    const newNews = await News.create({
+      title,
+      body: text,
+      userId,
+    })
+    if (!newNews) throw new Error('Can not create new user')
+    res.status(201).json({ newNews })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 module.exports = { getAllNews, getLatestNews, getSingleNews, createNews }

@@ -1,63 +1,25 @@
-const db = require('../database')
+const mongoose = require('mongoose')
 
-class News {
-  constructor(title, body, createdAt) {
-    this.title = title
-    this.body = body
-    this.createdAt = createdAt
-  }
+const NewsSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      reqired: [true, 'Пожалуйста, заполните заголовок новости'],
+      minlength: 3,
+      maxlength: 255,
+      trime: true,
+    },
+    body: {
+      type: String,
+      required: [true, 'Пожалуйста, добавьте текст новости'],
+    },
+    userId: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+  },
+  { timestamps: true }
+)
 
-  async create(authorId, authorName) {
-    const sql = `
-    INSERT INTO News(
-      title,
-      body,
-      createdAt,
-      authorId,
-      authorName
-    ) VALUES (?, ?, ?, ?, ?);
-    `
-
-    console.log(this.title, this.body, this.createdAt)
-    const [rows, fields] = await db.execute(sql, [
-      this.title,
-      this.body,
-      this.createdAt,
-      authorId,
-      authorName,
-    ])
-    return [rows, fields]
-  }
-
-  async delete() {}
-
-  static async getAllNews() {
-    const sql = `
-    SELECT * FROM News
-    ORDER BY createdAt DESC;
-    `
-
-    return await db.execute(sql)
-  }
-
-  static async getLatestNews() {
-    const sql = `
-    SELECT * FROM News
-    ORDER BY createdAt DESC
-    LIMIT 4;
-    `
-
-    return await db.execute(sql)
-  }
-
-  static async getSingleNews(id) {
-    const sql = `
-    SELECT * FROM News
-    WHERE id = ${id};
-    `
-
-    return await db.execute(sql)
-  }
-}
-
-module.exports = News
+module.exports = mongoose.model('News', NewsSchema)
