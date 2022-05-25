@@ -124,7 +124,7 @@ const Wrapper = styled.section`
     background: transparent;
     color: var(--clr-dark);
     cursor: pointer;
-    transition: var(--transition);
+    transition: all var(--transition);
 
     &:hover {
       color: var(--clr-primary);

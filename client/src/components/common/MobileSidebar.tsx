@@ -3,22 +3,19 @@ import styled from 'styled-components'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { Tabs, Tab } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
-
-enum Routes {
-  Home = '/',
-  Documents = '/documents',
-  News = '/news',
-  Contacts = '/contacts',
-}
+import { MenuRoutes, SystemRoutes } from '../../enums'
 
 export default function MobileSidebar() {
   const location = useLocation()
-  const history = useNavigate()
-  const [url, setUrl] = useState(location.pathname as Routes)
+  const navigate = useNavigate()
+  const [url, setUrl] = useState(location.pathname as MenuRoutes)
 
-  function onChange(e: SyntheticEvent, newValue: Routes) {
+  function onChange(e: SyntheticEvent, newValue: MenuRoutes) {
+    console.log(`Mobile navbar: ${url}`)
+
+    // if (Object.values(MenuRoutes).includes(newValue))
     setUrl(newValue)
-    history(newValue)
+    navigate(newValue)
   }
 
   return (
@@ -34,10 +31,12 @@ export default function MobileSidebar() {
         onChange={onChange}
         TabIndicatorProps={{ children: <span className='MuiTabs-indicatorSpan' /> }}
       >
-        <Tab value={Routes.Home} label='Главная' className='tab' />
-        <Tab value={Routes.Documents} label='Документы' className='tab' />
-        <Tab value={Routes.News} label='Новости' className='tab' />
-        <Tab value={Routes.Contacts} label='Контакты' className='tab' />
+        <Tab value={MenuRoutes.Home} label='Главная' className='tab' />
+        <Tab value={MenuRoutes.Documents} label='Документы' className='tab' />
+        <Tab value={MenuRoutes.News} label='Новости' className='tab' />
+        <Tab value={MenuRoutes.Contacts} label='Контакты' className='tab' />
+        <Tab value={SystemRoutes.Add} label='Добавить' className='tab hidden' />
+        <Tab value={SystemRoutes.SignIn} label='Войти' className='tab hidden' />
       </Tabs>
     </Container>
   )

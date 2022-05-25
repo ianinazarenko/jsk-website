@@ -22,12 +22,12 @@ const Container = styled.div`
   font-size: 1.5rem;
   line-height: 2rem;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all var(--transition);
 
-  &:after {
+  /* &:after {
     content: '';
     width: 100%;
-    height: 3px;
+    height: 2px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -40,7 +40,7 @@ const Container = styled.div`
   &:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
-  }
+  } */
 
   span {
     line-height: 1.5rem;

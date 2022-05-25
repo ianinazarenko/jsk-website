@@ -1,14 +1,12 @@
-import { TextField } from '@mui/material'
 import styled from 'styled-components'
-import InputAdornment from '@mui/material/InputAdornment'
-import SearchIcon from '@mui/icons-material/Search'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import LoginIcon from '@mui/icons-material/Login'
 import LogoutIcon from '@mui/icons-material/Logout'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import { useState } from 'react'
+import { MenuRoutes, SystemRoutes } from '../../enums'
+
+const styleLink = ({ isActive }: { isActive: boolean }) => ({ color: isActive ? 'brown' : '' })
 
 export default function DesktopSidebar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -28,10 +26,12 @@ export default function DesktopSidebar() {
           </div>
         ) : (
           <div className='logged-out-container'>
-            <div className='log-in' onClick={() => setIsLoggedIn(true)}>
-              <LoginIcon sx={{ mr: 1 }} />
-              Войти
-            </div>
+            <Link to={SystemRoutes.SignIn}>
+              <div className='log-in' onClick={() => setIsLoggedIn(true)}>
+                <LoginIcon sx={{ mr: 1 }} />
+                Войти
+              </div>
+            </Link>
           </div>
         )}
       </section>
@@ -39,31 +39,33 @@ export default function DesktopSidebar() {
       <section className='menu-container'>
         <h3>Меню</h3>
         <ul>
-          <Link to='/'>
+          <NavLink to={MenuRoutes.Home} style={styleLink}>
             <li className='g--hover-link'>Главная</li>
-          </Link>
-          <Link to='/news'>
+          </NavLink>
+          <NavLink to={MenuRoutes.News} style={styleLink}>
             <li className='g--hover-link'>Новости</li>
-          </Link>
-          <Link to='/documents'>
+          </NavLink>
+          <NavLink to={MenuRoutes.Documents} style={styleLink}>
             <li className='g--hover-link'>Документы</li>
-          </Link>
-          <Link to='/contacts'>
+          </NavLink>
+          <NavLink to={MenuRoutes.Contacts} style={styleLink}>
             <li className='g--hover-link'>Контакты</li>
-          </Link>
+          </NavLink>
         </ul>
-        <hr className='divider' />
-        <ul>
-          <Link to='/announcement/add'>
-            <li className='g--hover-link'>Главное объявление</li>
-          </Link>
-          <Link to='/news/add'>
-            <li className='g--hover-link'>Новость</li>
-          </Link>
-          <Link to='/documents/add'>
-            <li className='g--hover-link'>Документ</li>
-          </Link>
-        </ul>
+        {isLoggedIn && <hr className='divider' />}
+        {isLoggedIn && (
+          <ul>
+            <NavLink to={SystemRoutes.Add + '/announcement'} style={styleLink}>
+              <li className='g--hover-link'>Главное объявление</li>
+            </NavLink>
+            <NavLink to={SystemRoutes.Add + '/news'} style={styleLink}>
+              <li className='g--hover-link'>Новость</li>
+            </NavLink>
+            <NavLink to={SystemRoutes.Add + '/document'} style={styleLink}>
+              <li className='g--hover-link'>Документ</li>
+            </NavLink>
+          </ul>
+        )}
       </section>
 
       <section className='ballast-container'>{/* Dummy section */}</section>
@@ -110,7 +112,7 @@ const Wrapper = styled.aside`
       .log-in {
         display: flex;
         align-items: center;
-        transition: var(--transition);
+        transition: all var(--transition);
         cursor: pointer;
 
         &:hover {
@@ -122,7 +124,7 @@ const Wrapper = styled.aside`
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        transition: var(--transition);
+        transition: all var(--transition);
         cursor: pointer;
 
         svg {
@@ -138,7 +140,7 @@ const Wrapper = styled.aside`
         display: flex;
         align-items: center;
         line-height: 1;
-        transition: var(--transition);
+        transition: all var(--transition);
         cursor: pointer;
 
         &:hover {

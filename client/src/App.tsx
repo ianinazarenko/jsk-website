@@ -1,7 +1,10 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import styled from 'styled-components'
-import { DesktopSidebar, Footer, MobileSidebar } from './components/common'
-import { Contacts, Documents, Home, News, SignIn, NotFound } from './pages'
+import { DesktopSidebar, Footer, MobileSidebar, ProtectedRoute } from './components/common'
+import { Contacts, Documents, Home, News, SignIn, NotFound, AddEdit, SingleNews } from './pages'
+import { MenuRoutes, SystemRoutes } from './enums'
+import './axios'
+import UnderConstruction from './pages/UnderConstruction'
 
 function App() {
   return (
@@ -9,15 +12,22 @@ function App() {
       <DesktopSidebar />
       <main>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/news' element={<News />} />
-          <Route path='/documents' element={<Documents />} />
-          <Route path='/contacts' element={<Contacts />} />
-          <Route path='/sign-in' element={<SignIn />} />
+          <Route path={MenuRoutes.Home} element={<Home />} />
+          <Route path={MenuRoutes.SingleNews} element={<SingleNews />} />
+          <Route path={MenuRoutes.Documents} element={<Documents />} />
+          <Route path={MenuRoutes.Contacts} element={<Contacts />} />
+          <Route path={SystemRoutes.SignIn} element={<SignIn />} />
+          <Route element={<ProtectedRoute user={'admin'} redirectPath={MenuRoutes.Home} />}>
+            <Route path={SystemRoutes.Add} element={<AddEdit />}>
+              <Route path='announcement' element={<AddEdit />} />
+              <Route path='news' element={<AddEdit />} />
+              <Route path='document' element={<AddEdit />} />
+            </Route>
+          </Route>
           <Route path='*' element={<NotFound />} />
         </Routes>
       </main>
-      <MobileSidebar />
+      {/* <MobileSidebar /> */}
       <Footer />
     </AppWrapper>
   )
