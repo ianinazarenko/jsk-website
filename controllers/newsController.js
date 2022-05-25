@@ -12,9 +12,13 @@ async function getAllNews(req, res) {
 }
 
 async function getLatestNews(req, res) {
-  const [rows, _] = await News.getLatestNews()
-  console.log(rows)
-  res.status(200).json({ news: rows })
+  try {
+    const news = await News.find({}).sort({ createdAt: -1 }).limit(4)
+    if (!news?.length) throw new Error('No news')
+    res.status(200).json({ news })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 async function getSingleNews(req, res) {
