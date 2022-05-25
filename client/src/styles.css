@@ -20,7 +20,9 @@ html {
   --font-control: 'Roboto', sans-serif;
 
   /* colors */
-  --clr-text: #333;
+  --clr-text: #333333;
+  --clr-dark-blue-2: #3f3d56;
+  --clr-dark-blue-1: #2f2e41;
   /* |-> old colors */
   --clr-primary: #ffab91;
   /* --clr-light: #ffddc1; */
@@ -115,19 +117,19 @@ p.g--reading-text {
 }
 
 .g--clickable-contact {
-  color: var(--clr-dark);
+  /* color: var(--clr-dark); */
   text-decoration: underline;
   cursor: pointer;
 }
 
 button.g--btn {
   color: var(--clr-dark);
-  border: 1px solid var(--clr-dark);
+  border-color: var(--clr-dark);
 }
 
 button.g--btn:hover {
-  border-color: var(--clr-dark);
   background-color: var(--clr-button-bg);
+  border-color: var(--clr-dark);
 }
 
 .g--section {

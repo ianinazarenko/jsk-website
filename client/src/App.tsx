@@ -5,31 +5,38 @@ import { Contacts, Documents, Home, News, SignIn, NotFound, AddEdit, SingleNews 
 import { MenuRoutes, SystemRoutes } from './enums'
 import './axios'
 import UnderConstruction from './pages/UnderConstruction'
+import { ErrorBoundary } from 'react-error-boundary'
+import { ErrorBoundaryFallback } from './components/common'
 
 function App() {
+  function errorHandler(error: Error, errorInfo: React.ErrorInfo) {
+    console.log('Error boundary: ', error, errorInfo)
+  }
   return (
-    <AppWrapper className='App'>
-      <DesktopSidebar />
-      <main>
-        <Routes>
-          <Route path={MenuRoutes.Home} element={<Home />} />
-          <Route path={MenuRoutes.SingleNews} element={<SingleNews />} />
-          <Route path={MenuRoutes.Documents} element={<Documents />} />
-          <Route path={MenuRoutes.Contacts} element={<Contacts />} />
-          <Route path={SystemRoutes.SignIn} element={<SignIn />} />
-          <Route element={<ProtectedRoute user={'admin'} redirectPath={MenuRoutes.Home} />}>
-            <Route path={SystemRoutes.Add} element={<AddEdit />}>
-              <Route path='announcement' element={<AddEdit />} />
-              <Route path='news' element={<AddEdit />} />
-              <Route path='document' element={<AddEdit />} />
+    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onError={errorHandler}>
+      <AppWrapper className='App'>
+        <DesktopSidebar />
+        <main>
+          <Routes>
+            <Route path={MenuRoutes.Home} element={<Home />} />
+            <Route path={MenuRoutes.SingleNews} element={<SingleNews />} />
+            <Route path={MenuRoutes.Documents} element={<Documents />} />
+            <Route path={MenuRoutes.Contacts} element={<Contacts />} />
+            <Route path={SystemRoutes.SignIn} element={<SignIn />} />
+            <Route element={<ProtectedRoute user={'admin'} redirectPath={MenuRoutes.Home} />}>
+              <Route path={SystemRoutes.Add} element={<AddEdit />}>
+                <Route path='announcement' element={<AddEdit />} />
+                <Route path='news' element={<AddEdit />} />
+                <Route path='document' element={<AddEdit />} />
+              </Route>
             </Route>
-          </Route>
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-      </main>
-      {/* <MobileSidebar /> */}
-      <Footer />
-    </AppWrapper>
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </main>
+        {/* <MobileSidebar /> */}
+        <Footer />
+      </AppWrapper>
+    </ErrorBoundary>
   )
 }
 
