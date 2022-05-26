@@ -46,7 +46,7 @@ const Wrapper = styled.div`
   padding: 2rem;
 
   h1 {
-    color: var(--clr-dark);
+    color: var(--clr-primary);
     font-size: 2.5rem;
   }
 

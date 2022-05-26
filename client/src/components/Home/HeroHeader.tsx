@@ -16,7 +16,7 @@ export default function HeroHeader() {
 const Wrapper = styled.div`
   .header-title {
     font-size: 3rem;
-    color: var(--clr-dark);
+    color: var(--clr-primary);
     font-weight: 700;
     margin-bottom: 0;
     font-family: var(--font-display);

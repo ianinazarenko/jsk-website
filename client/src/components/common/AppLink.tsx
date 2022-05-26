@@ -17,7 +17,7 @@ const Container = styled.div`
   position: relative;
   margin: 0.75rem 0;
   padding: 0.25rem 0;
-  color: var(--clr-dark);
+  color: var(--clr-darkblue);
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 2rem;
@@ -31,7 +31,7 @@ const Container = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
-    background-color: var(--clr-dark);
+    background-color: var(--clr-primary);
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;

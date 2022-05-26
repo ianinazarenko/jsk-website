@@ -34,13 +34,13 @@ const Wrapper = styled.div`
   padding: 2rem;
 
   h1 {
-    color: var(--clr-dark);
+    color: var(--clr-primary);
     margin: 0;
     line-height: 1;
   }
 
   .error-code {
-    color: var(--clr-dark);
+    color: var(--clr-primary);
     font-size: 5rem;
     font-weight: bold;
     line-height: 1;

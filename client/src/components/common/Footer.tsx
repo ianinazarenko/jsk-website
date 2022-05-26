@@ -5,7 +5,7 @@ export default function Footer() {
 }
 
 const Wrapper = styled.footer`
-  color: var(--clr-dark);
+  color: var(--clr-primary);
   background-color: var(--clr-whitesmoke);
   text-align: center;
   padding: 1rem 1.25rem;

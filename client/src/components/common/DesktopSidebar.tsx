@@ -116,7 +116,7 @@ const Wrapper = styled.aside`
         cursor: pointer;
 
         &:hover {
-          color: var(--clr-dark);
+          color: var(--clr-primary);
         }
       }
 
@@ -132,7 +132,7 @@ const Wrapper = styled.aside`
         }
 
         &:hover {
-          color: var(--clr-dark);
+          color: var(--clr-primary);
         }
       }
 
@@ -144,7 +144,7 @@ const Wrapper = styled.aside`
         cursor: pointer;
 
         &:hover {
-          color: var(--clr-dark);
+          color: var(--clr-primary);
         }
       }
     }

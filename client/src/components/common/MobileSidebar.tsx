@@ -44,7 +44,7 @@ export default function MobileSidebar() {
 
 const Container = styled.nav`
   margin-top: 1rem;
-  background-color: var(--clr-dark);
+  background-color: var(--clr-primary);
   color: var(--clr-white);
   display: flex;
   flex-wrap: nowrap;

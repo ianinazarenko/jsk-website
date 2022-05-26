@@ -30,7 +30,7 @@ const Wrapper = styled.section`
   padding-right: 0; */
   padding: 2rem 0;
   background-color: var(--clr-whitesmoke);
-  border-top: 0.25rem solid var(--clr-dark);
+  border-top: 0.25rem solid var(--clr-primary);
 
   p {
     margin-bottom: 1.25rem;
@@ -57,7 +57,7 @@ const Wrapper = styled.section`
       background-color: var(--clr-whitesmoke);
       border-bottom-left-radius: 2rem;
       border-bottom-right-radius: 2rem;
-      border-top: 0.25rem solid var(--clr-dark);
+      border-top: 0.25rem solid var(--clr-primary);
       padding: 2rem 2.5rem;
     }
 

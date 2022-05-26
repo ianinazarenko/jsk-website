@@ -34,7 +34,7 @@ const Wrapper = styled.div`
     .main-content {
       cursor: pointer;
       margin: 0;
-      margin-left: calc(-1.5rem - 3px);
+      margin-left: -1.5rem;
       padding: 0 1.5rem;
     }
   }
