@@ -5,9 +5,10 @@ const dotenv = require('dotenv')
 const connectDB = require('./database/connect')
 
 // middleware
-var cors = require('cors')
+require('express-async-errors')
+const cors = require('cors')
 const notFoundMiddleware = require('./middleware/notFound')
-const errorHandlerMiddleware = require('./middleware/errorHandler')
+const errorHandlerMiddleware = require('./middleware/errorHandler.js')
 
 // routes
 const authRouter = require('./routes/authRoutes')
@@ -27,7 +28,7 @@ app.get('/', async (req, res) => {
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/news', newsRouter)
 
-app.use(notFoundMiddleware)
+// app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 5000
