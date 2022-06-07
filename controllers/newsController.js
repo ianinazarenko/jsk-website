@@ -1,10 +1,11 @@
+const { StatusCodes } = require('http-status-codes')
 const News = require('../models/News')
 
 async function getAllNews(req, res) {
   try {
     const news = await News.find({})
     if (!news?.length) throw new Error('No news')
-    res.status(200).json({ news })
+    res.status(StatusCodes.OK).json({ news })
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
@@ -23,8 +24,14 @@ async function getLatestNews(req, res) {
 
 async function getSingleNews(req, res) {
   const { id } = req.params
-  const [rows, _] = await News.getSingleNews(id)
-  res.status(200).json({ rows })
+  try {
+    const foundNews = await News.find({ id })
+
+    if (!foundNews) throw new Error('News is not found')
+    res.status(200).json({ foundNews })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 async function createNews(req, res) {
