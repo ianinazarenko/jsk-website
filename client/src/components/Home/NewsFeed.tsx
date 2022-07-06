@@ -32,7 +32,7 @@ export default function NewsFeed() {
         <div className='news-container'>
           {newsList.length ? (
             newsList.map((news, index) => (
-              <NewsSample title={news.title} text={news.body} id={news.id} key={index} />
+              <NewsSample title={news.title} text={news.body} id={news._id} key={index} />
             ))
           ) : (
             <h4>Ой, новости куда-то девались</h4>

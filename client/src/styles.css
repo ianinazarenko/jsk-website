@@ -22,15 +22,8 @@ html {
   /* colors */
   --clr-text: #2f2e41;
   --clr-darkblue: #3f3d56;
-  /* |-> old colors */
-  /* --clr-light: #ffddc1; */
-  /* --clr-primary: #c97b63; */
-  /* <-| old colors */
-  /* |-> new colors */
   --clr-light: lightcoral;
   --clr-primary: brown;
-  /* --clr-primary: #a52a2a; */
-  /* <-| new colors */
   --clr-button-bg: rgba(201, 123, 99, 0.1);
   --clr-white: #fefefe;
   --clr-gray: #7d7e90;
@@ -128,6 +121,22 @@ button.g--btn {
 button.g--btn:hover {
   background-color: var(--clr-button-bg);
   border-color: var(--clr-primary);
+}
+
+button.g--btn-solid {
+  box-shadow: 0 6px 14px rgba(100, 0, 0, 0.23);
+  background: rgb(165, 42, 42);
+  color: whitesmoke;
+  border-color: rgb(165, 42, 42);
+  transition: var(--transition);
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+button.g--btn-solid:hover {
+  box-shadow: 0 6px 22px rgba(100, 0, 0, 0.33);
+  background: rgb(197, 58, 58);
+  border-color: rgb(197, 58, 58);
 }
 
 .g--section {

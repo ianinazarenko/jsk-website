@@ -16,9 +16,7 @@ export default function NotFound() {
           <h1>Хм, здесь ничего нет</h1>
           <p>Поскребли по сусекам, но не смогли найти такую странцу</p>
           <Link to={'/'}>
-            <Button className='g--btn' variant='outlined'>
-              На главную
-            </Button>
+            <Button className='g--btn g--btn-solid'>На главную</Button>
           </Link>
         </div>
       </div>

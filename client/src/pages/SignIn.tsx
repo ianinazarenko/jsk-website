@@ -1,23 +1,21 @@
 import { Button, TextField } from '@mui/material'
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store'
+import { Credentials } from '../types'
 
-interface signInData {
-  name?: string
-  email: string
-  password: string
-}
-
-const initialState = {
+const initialCreds: Credentials = {
   name: '',
   email: '',
   password: '',
-  isMember: true,
 }
 
 export default function SignIn() {
-  const [creds, setCreds] = useState(initialState)
-  const { name, email, password, isMember } = creds
+  const [creds, setCreds] = useState(initialCreds)
+  const [isMember, setIsMember] = useState(false)
+  const { name, email, password } = creds
+  const { isLoggedIn } = useSelector((store: RootState) => store.currentUser)
 
   function onCredsChange(e: ChangeEvent<HTMLInputElement>): void {
     setCreds({ ...creds, [e.target.name]: e.target.value })
@@ -25,8 +23,8 @@ export default function SignIn() {
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault()
-    let data: signInData
-    if (isMember) {
+    let data: Credentials
+    if (isLoggedIn) {
       data = { email, password }
     } else {
       data = { email, name, password }
@@ -34,9 +32,13 @@ export default function SignIn() {
     submit(data)
   }
 
-  async function submit(data: signInData) {
+  async function submit(data: Credentials) {
     console.log(data)
   }
+
+  useEffect(() => {
+    if (isLoggedIn) setIsMember(true)
+  }, [])
 
   return (
     <Wrapper className='g--section'>
@@ -83,17 +85,13 @@ export default function SignIn() {
             <span className='helper-text'>
               {isMember ? 'Еще не зарегистрированы? ' : 'Уже зарегистрированы? '}
             </span>
-            <button
-              type='button'
-              className='text-btn'
-              onClick={() => setCreds({ ...creds, isMember: !isMember })}
-            >
+            <button type='button' className='text-btn' onClick={() => setIsMember(!isMember)}>
               {isMember ? 'Зарегистрироваться' : 'Войти'}
             </button>
           </div>
 
           <div className='form-row'>
-            <Button type='submit' className='g--btn' variant='outlined'>
+            <Button type='submit' className='g--btn-solid' variant='outlined'>
               {isMember ? 'Войти' : 'Зарегистрироваться'}
             </Button>
           </div>

@@ -3,13 +3,16 @@ import { Link, NavLink } from 'react-router-dom'
 import LoginIcon from '@mui/icons-material/Login'
 import LogoutIcon from '@mui/icons-material/Logout'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import { useState } from 'react'
 import { MenuRoutes, SystemRoutes } from '../../enums'
+import { useDispatch, useSelector } from 'react-redux'
+import { logOut } from '../../features/currentUser/currentUserSlice'
+import { RootState } from '../../store'
 
 const styleLink = ({ isActive }: { isActive: boolean }) => ({ color: isActive ? 'brown' : '' })
 
 export default function DesktopSidebar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const { isLoggedIn } = useSelector((state: RootState) => state.currentUser)
+  const dispatch = useDispatch()
 
   return (
     <Wrapper className='sidebar'>
@@ -20,14 +23,14 @@ export default function DesktopSidebar() {
               <AccountCircleIcon sx={{ mr: 1 }} />
               admin
             </div>
-            <div className='log-out' onClick={() => setIsLoggedIn(false)}>
+            <div className='log-out' onClick={() => dispatch(logOut)}>
               <LogoutIcon sx={{ ml: 1 }} />
             </div>
           </div>
         ) : (
           <div className='logged-out-container'>
             <Link to={SystemRoutes.SignIn}>
-              <div className='log-in' onClick={() => setIsLoggedIn(true)}>
+              <div className='log-in'>
                 <LoginIcon sx={{ mr: 1 }} />
                 Войти
               </div>

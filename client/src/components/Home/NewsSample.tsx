@@ -8,7 +8,7 @@ export default function NewsSample({
 }: {
   title: string
   text: string
-  id: number
+  id: string
 }) {
   return (
     <Link to={`/news/${id}`}>

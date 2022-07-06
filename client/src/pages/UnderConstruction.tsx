@@ -26,9 +26,7 @@ export default function UnderConstruction({ h1 }: { h1: string }) {
             <ContactsShort title='Диспетчер аварийной службы' phone='+ 7 (812) 999-00-00' />
             <div>
               <Link to='/'>
-                <Button className='g--btn' variant='outlined'>
-                  На главную
-                </Button>
+                <Button className='g--btn-solid'>На главную</Button>
               </Link>
             </div>
           </div>
