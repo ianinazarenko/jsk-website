@@ -30,7 +30,7 @@ html {
   --clr-primary-transparent: rgba(255, 221, 193, 0.2);
   --clr-whitesmoke: whitesmoke;
 
-  --transition: 0.25s ease-out;
+  --transition: 0.25s ease-in-out;
 
   --desc: 960px;
   --wide-desc: 1366px;
@@ -245,9 +245,6 @@ input:-webkit-autofill:active {
 
   p {
     font-size: 1.125rem;
-  }
-
-  .g--section {
   }
 
   .g--section-centered {

@@ -1,4 +1,4 @@
-export enum MenuRoutes {
+export const enum MenuRoutes {
   Home = '/',
   News = 'news',
   SingleNews = 'news/:newsId',
@@ -9,4 +9,11 @@ export enum MenuRoutes {
 export enum SystemRoutes {
   SignIn = 'sign-in',
   Add = 'add',
+}
+
+export enum AlertType {
+  Error = 'error',
+  Warning = 'warning',
+  Info = 'info',
+  Success = 'success',
 }

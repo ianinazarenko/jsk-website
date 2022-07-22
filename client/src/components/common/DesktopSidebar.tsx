@@ -23,7 +23,7 @@ export default function DesktopSidebar() {
               <AccountCircleIcon sx={{ mr: 1 }} />
               admin
             </div>
-            <div className='log-out' onClick={() => dispatch(logOut)}>
+            <div className='log-out' onClick={() => dispatch(logOut())}>
               <LogoutIcon sx={{ ml: 1 }} />
             </div>
           </div>

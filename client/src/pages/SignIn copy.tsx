@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { useForm, SubmitHandler, Controller } from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 
 import axios from 'axios'
 import { RootState } from '../store'
@@ -9,7 +9,7 @@ import { RootState } from '../store'
 import { Credentials, BasicAlert } from '../types'
 import { AlertType } from '../enums'
 
-// import { logIn, register } from '../features/currentUser/currentUserSlice'
+import { logIn, register } from '../features/currentUser/currentUserSlice'
 import CircularProgress from '@mui/material/CircularProgress'
 
 import styled from 'styled-components'
@@ -38,7 +38,6 @@ export default function SignIn() {
     handleSubmit,
     watch,
     formState: { errors },
-    control,
   } = useForm<Credentials>()
 
   const { name, email, password } = creds
@@ -111,65 +110,37 @@ export default function SignIn() {
           <h4>{isMember ? 'Вход' : 'Регистрация'}</h4>
           <div className='form-row'>
             {isMember || (
-              <Controller
-                name='name'
-                defaultValue=''
-                control={control}
-                rules={{ required: true, maxLength: 20, minLength: 3 }}
-                render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
-                  <TextField
-                    value={value}
-                    label='Имя'
-                    type='text'
-                    variant='filled'
-                    className='text-field'
-                    error={!!error}
-                    helperText={error ? error.message : null}
-                    onChange={onChange}
-                  />
-                )}
+              <TextField
+                value={name}
+                label='Имя'
+                type='text'
+                variant='filled'
+                className='text-field'
+                {...register('name', { required: true, maxLength: 20 })}
+                onChange={onCredsChange}
               />
             )}
           </div>
           <div className='form-row'>
-            <Controller
+            <TextField
+              value={email}
+              label='E-mail'
+              type='text'
+              variant='filled'
               name='email'
-              defaultValue=''
-              control={control}
-              rules={{
-                required: true,
-                pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-              }}
-              render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
-                <TextField
-                  value={value}
-                  label='E-mail'
-                  type='text'
-                  variant='filled'
-                  className='text-field'
-                  helperText={error ? error.message : null}
-                  onChange={onChange}
-                />
-              )}
+              className='text-field'
+              onChange={onCredsChange}
             />
           </div>
           <div className='form-row'>
-            <Controller
+            <TextField
+              value={password}
+              label='Пароль'
+              type='password'
+              variant='filled'
               name='password'
-              defaultValue=''
-              control={control}
-              rules={{ required: true, minLength: 5 }}
-              render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
-                <TextField
-                  value={value}
-                  label='Пароль'
-                  type='password'
-                  variant='filled'
-                  className='text-field'
-                  helperText={error ? error.message : null}
-                  onChange={onChange}
-                />
-              )}
+              className='text-field'
+              onChange={onCredsChange}
             />
           </div>
 
@@ -198,6 +169,7 @@ export default function SignIn() {
               )}
             </Button>
           </div>
+          {errors.name && <span>This field is required</span>}
         </form>
       </div>
       <Fade in={alert.isShown}>
@@ -250,11 +222,11 @@ const Wrapper = styled.section`
   }
 
   .text-field {
-    label.Mui-focused:not(.Mui-error) {
+    label.Mui-focused {
       color: #3f3d56;
     }
 
-    .MuiFilledInput-root:not(.Mui-error):after {
+    .MuiFilledInput-underline:after {
       border-bottom-color: #3f3d56;
     }
   }

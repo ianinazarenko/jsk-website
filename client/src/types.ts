@@ -1,3 +1,5 @@
+import * as enums from './enums'
+
 export interface Credentials {
   name?: string
   email: string
@@ -8,7 +10,10 @@ export interface Credentials {
 export interface CurrentUserState {
   isLoggedIn: boolean
   userInfo: {
+    id: string | null
     name: string
+    email: string
+    token: string
   }
 }
 
@@ -20,4 +25,11 @@ export interface News {
   authorId: number
   authorName: string
   createdAt: string
+}
+
+// Utils
+export interface BasicAlert {
+  type: enums.AlertType
+  isShown: boolean
+  message: string
 }
