@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import LoginIcon from '@mui/icons-material/Login'
 import LogoutIcon from '@mui/icons-material/Logout'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
@@ -13,6 +14,17 @@ const styleLink = ({ isActive }: { isActive: boolean }) => ({ color: isActive ? 
 export default function DesktopSidebar() {
   const { isLoggedIn } = useSelector((state: RootState) => state.currentUser)
   const dispatch = useDispatch()
+
+  const [topOffset, setTopOffset] = useState('0rem')
+  const { pathname } = useLocation()
+  console.log(pathname, topOffset)
+
+  useEffect(() => {
+    if (pathname === '/') setTopOffset('0rem')
+    if (pathname === '/news') setTopOffset('2rem')
+    if (pathname === '/documents') setTopOffset('4rem')
+    if (pathname === '/contacts') setTopOffset('6rem')
+  }, [pathname])
 
   return (
     <Wrapper className='sidebar'>
@@ -41,31 +53,34 @@ export default function DesktopSidebar() {
 
       <section className='menu-container'>
         <h3>Меню</h3>
-        <ul>
-          <NavLink to={MenuRoutes.Home} style={styleLink}>
-            <li className='g--hover-link'>Главная</li>
-          </NavLink>
-          <NavLink to={MenuRoutes.News} style={styleLink}>
-            <li className='g--hover-link'>Новости</li>
-          </NavLink>
-          <NavLink to={MenuRoutes.Documents} style={styleLink}>
-            <li className='g--hover-link'>Документы</li>
-          </NavLink>
-          <NavLink to={MenuRoutes.Contacts} style={styleLink}>
-            <li className='g--hover-link'>Контакты</li>
-          </NavLink>
-        </ul>
+        <div className='menu-links-container'>
+          <OutlineMarker top={topOffset} />
+          <ul>
+            <NavLink to={MenuRoutes.Home} style={styleLink}>
+              <li className=''>Главная</li>
+            </NavLink>
+            <NavLink to={MenuRoutes.News} style={styleLink}>
+              <li className=''>Новости</li>
+            </NavLink>
+            <NavLink to={MenuRoutes.Documents} style={styleLink}>
+              <li className=''>Документы</li>
+            </NavLink>
+            <NavLink to={MenuRoutes.Contacts} style={styleLink}>
+              <li className=''>Контакты</li>
+            </NavLink>
+          </ul>
+        </div>
         {isLoggedIn && <hr className='divider' />}
         {isLoggedIn && (
           <ul>
             <NavLink to={SystemRoutes.Add + '/announcement'} style={styleLink}>
-              <li className='g--hover-link'>Главное объявление</li>
+              <li className=''>Главное объявление</li>
             </NavLink>
             <NavLink to={SystemRoutes.Add + '/news'} style={styleLink}>
-              <li className='g--hover-link'>Новость</li>
+              <li className=''>Новость</li>
             </NavLink>
             <NavLink to={SystemRoutes.Add + '/document'} style={styleLink}>
-              <li className='g--hover-link'>Документ</li>
+              <li className=''>Документ</li>
             </NavLink>
           </ul>
         )}
@@ -157,8 +172,14 @@ const Wrapper = styled.aside`
       font-size: 1rem;
       align-self: center;
 
+      .menu-links-container {
+        position: relative;
+        padding-left: 1rem;
+      }
+
       li {
         text-transform: uppercase;
+        margin: 0.5rem 0;
       }
 
       .divider {
@@ -179,4 +200,15 @@ const Wrapper = styled.aside`
       }
     }
   }
+`
+
+const OutlineMarker = styled.div<{ top: string }>`
+  position: absolute;
+  top: ${(props) => props.top || 0};
+  left: 0;
+  width: 0.25rem;
+  height: 1.5rem;
+  background-color: brown;
+  border-radius: 0.5rem;
+  transition: top 0.25s cubic-bezier(0, 1, 0.5, 1);
 `
